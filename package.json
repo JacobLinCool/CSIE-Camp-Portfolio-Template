@@ -15,8 +15,7 @@
     },
     "dependencies": {
         "vue": "^3.2.37",
-        "vue-router": "^4.0.16",
-        "vue-starport": "^0.2.11"
+        "vue-router": "^4.0.16"
     },
     "devDependencies": {
         "@iconify-json/mdi": "^1.1.20",
