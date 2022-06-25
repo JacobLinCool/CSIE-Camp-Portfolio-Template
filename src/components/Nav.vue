@@ -51,10 +51,7 @@ const links = [
                 class="absolute top-4 left-4 z-50 h-20 w-20 overflow-hidden rounded-full bg-pink-200 shadow-md shadow-blue-300 ring-1 ring-violet-700 md:h-24 md:w-24"
                 v-if="$route.path !== '/about'"
             >
-                <img
-                    src=""
-                    class="w-full translate-y-12 scale-[180%] transition-all duration-200 hover:rounded-xl hover:pt-5 md:translate-y-14 md:hover:pt-7"
-                />
+                <img src="https://placekitten.com/320/320" class="w-full rounded-full" />
             </div>
         </transition>
     </div>

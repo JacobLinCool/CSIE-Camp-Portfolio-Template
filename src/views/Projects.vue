@@ -1,37 +1,77 @@
 <script setup>
-import Typing from "../components/Typing.vue";
+import { ref, watch } from "vue";
+import { random_text } from "@/utils";
+import Typing from "@components/Typing.vue";
+import Project from "@components/Project.vue";
+import Fade from "../components/Fade.vue";
 
-function random_text(length = 32) {
-    const dict = "abcdefghijklmnopqrstuvwxyz ";
-    let text = "";
-    for (let i = 0; i < length; i++) {
-        text += dict[Math.floor(Math.random() * dict.length)];
+const projects = [
+    {
+        name: "製作個人網站？",
+        description: "This is a project description. " + random_text(64),
+        image: "https://picsum.photos/640/320",
+        link: "https://github.com",
+        tags: ["tag1", "tag2", "tag3"],
+    },
+    {
+        name: "寫出 AI？",
+        description: "This is a project description. " + random_text(64),
+        image: "https://picsum.photos/640/320",
+        link: "https://github.com",
+        tags: ["tag1", "tag2", "tag3"],
+    },
+    {
+        name: "學會 Linux？",
+        description: "This is a project description. " + random_text(64),
+        image: "https://picsum.photos/640/320",
+        link: "https://github.com",
+        tags: ["tag1", "tag2", "tag3"],
+    },
+    {
+        name: "做出桌布？",
+        description: "This is a project description. " + random_text(64),
+        image: "https://picsum.photos/640/320",
+        link: "https://github.com",
+        tags: ["tag1", "tag2", "tag3"],
+    },
+];
+
+const step = ref(0);
+let interval = -1;
+
+watch(step, () => {
+    if (step.value > 0 && interval === -1) {
+        interval = window.setInterval(() => {
+            step.value++;
+            if (step.value >= projects.length) {
+                window.clearInterval(interval);
+            }
+        }, 200);
     }
-    return text;
-}
+});
 </script>
 <template>
     <div class="h-full w-full px-8 pt-16 sm:px-12 sm:pt-20 lg:px-16 lg:pt-24">
-        <Typing text="My Projects" class="block text-2xl sm:text-3xl lg:text-4xl" />
+        <Typing
+            v-if="step >= 0"
+            @done="step++"
+            text="My Projects"
+            class="block text-2xl sm:text-3xl lg:text-4xl"
+        />
         <div class="py-2">
-            <div
-                v-for="i in 100"
-                :key="i"
-                class="my-2 w-full rounded-md bg-white bg-opacity-50 p-4 shadow-md shadow-indigo-200"
-            >
-                <Typing
-                    :text="`Project No.${i}`"
-                    :speed="40"
-                    :delay="800 + i * 480"
-                    class="text-lg"
-                />
-                <Typing
-                    :text="random_text(64 + Math.round(Math.random() * 192)) + '.'"
-                    :speed="30"
-                    :delay="1000 + i * 480"
-                    class="hyphens-auto block break-all"
-                    style="hyphens: auto"
-                />
+            <div v-for="(project, index) in projects">
+                <Fade>
+                    <Project
+                        v-if="step >= index + 1"
+                        :key="index"
+                        class="my-2 w-full rounded-md bg-white bg-opacity-50 p-4 shadow-md shadow-indigo-200"
+                        :name="project.name"
+                        :description="project.description"
+                        :image="project.image"
+                        :link="project.link"
+                        :tags="project.tags"
+                    />
+                </Fade>
             </div>
         </div>
     </div>
