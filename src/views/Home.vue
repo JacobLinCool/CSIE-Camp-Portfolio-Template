@@ -11,13 +11,19 @@ const step = ref(0);
         <Typing
             v-if="step >= 0"
             @done="step++"
-            text="My Portfolio"
+            text="傻粒的小世界(❁-◡-❁)"
             class="mb-2 block text-2xl sm:text-3xl lg:text-4xl"
         />
-        <Typing v-if="step >= 1" @done="step++" text="Hello!" :speed="60" />
+        <Typing
+            v-if="step >= 1"
+            @done="step++"
+            text="我記得老天對我們都是公平的... 
+            那現在呢??"
+            :speed="100"
+        />
         <a
             v-if="step >= 2"
-            class="mt-8 flex items-center text-lg text-gray-500 transition-all hover:text-gray-700"
+            class="mt-8 flex items-center text-lg text-lime-500 transition-all hover:text-sky-500"
             href="https://github.com/"
             target="_blank"
         >
