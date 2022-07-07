@@ -19,15 +19,15 @@ jobs:
                   version: latest
                   run_install: true
 
-            # - name: Build
-            #   run: |
-            #       pnpm build
+            - name: Build
+              run: |
+                  pnpm build
 
-            # - name: Deploy
-            #   uses: peaceiris/actions-gh-pages@v3
-            #   with:
-            #       github_token: ${{ secrets.GITHUB_TOKEN }}
-            #       publish_dir: ./dist
+            - name: Deploy
+              uses: peaceiris/actions-gh-pages@v3
+              with:
+                  github_token: ${{ secrets.GITHUB_TOKEN }}
+                  publish_dir: ./dist
 
 permissions:
     contents: write
