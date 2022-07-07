@@ -14,7 +14,7 @@ body,
 }
 
 #app {
-    @apply fixed top-0 left-0 bg-violet-100;
+    @apply fixed top-0 left-0 bg-yellow-100;
 }
 
 @font-face {
