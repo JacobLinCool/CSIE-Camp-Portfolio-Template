@@ -7,7 +7,7 @@ import Fade from "../components/Fade.vue";
 
 const projects = [
     {
-        name: "製作個人網站？",
+        name: "我製作個人網站？",
         description:
             "是這幾天學的最後一堂課，也是讓我充滿驚喜的一堂，改了好多的程式，就只為了想要滿足自己的小心靈，吧?",
         image: "https://i.pinimg.com/564x/d0/44/4b/d0444b10da2a0ec23236494a8f0fa35b.jpg",
